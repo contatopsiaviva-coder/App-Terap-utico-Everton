@@ -6,393 +6,96 @@
 <title>Programa Terapêutico — Everton</title>
 <style>
   :root {
-    --primary: #4A7C6F;
-    --primary-light: #6BA898;
-    --primary-dark: #2D5C52;
-    --accent: #E8B86D;
-    --bg: #F7F4EF;
+    --primary: #2C5282;
+    --primary-light: #4A7FBF;
+    --primary-dark: #1A365D;
+    --accent: #C9A84C;
+    --bg: #F0F4F8;
     --card: #FFFFFF;
-    --text: #2C3E35;
-    --text-light: #6B7C75;
-    --danger: #C0392B;
-    --success: #27AE60;
-    --border: #DDD8D0;
+    --text: #1A202C;
+    --text-light: #4A5568;
+    --border: #CBD5E0;
     --shadow: 0 2px 12px rgba(0,0,0,0.08);
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  /* ── CONFIG BANNER ── */
-  #config-banner {
-    background: #FFF3CD;
-    border-bottom: 2px solid var(--accent);
-    padding: 12px 20px;
-    font-size: 13px;
-    color: #7A5C00;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  #config-banner input {
-    border: 1px solid #C9A227;
-    border-radius: 6px;
-    padding: 4px 10px;
-    font-size: 13px;
-    width: 160px;
-    background: #FFFBF0;
-  }
-  #config-banner button {
-    background: var(--accent);
-    border: none;
-    border-radius: 6px;
-    padding: 5px 14px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #fff;
-    cursor: pointer;
-  }
-
-  /* ── HEADER ── */
-  header {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    color: white;
-    padding: 28px 20px 24px;
-    text-align: center;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  #config-banner { background: #FFF3CD; border-bottom: 2px solid var(--accent); padding: 12px 20px; font-size: 13px; color: #7A5C00; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  #config-banner input { border: 1px solid #C9A227; border-radius: 6px; padding: 4px 10px; font-size: 13px; width: 160px; background: #FFFBF0; }
+  #config-banner button { background: var(--accent); border: none; border-radius: 6px; padding: 5px 14px; font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; }
+  header { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); color: white; padding: 28px 20px 24px; text-align: center; }
   header .logo { font-size: 28px; margin-bottom: 4px; }
-  header h1 { font-size: 20px; font-weight: 700; letter-spacing: 0.3px; }
+  header h1 { font-size: 20px; font-weight: 700; }
   header p { font-size: 13px; opacity: 0.85; margin-top: 4px; }
-  .date-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 4px 14px;
-    font-size: 12px;
-    margin-top: 10px;
-  }
-
-  /* ── NAV ── */
-  nav {
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    padding: 0 16px;
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
+  .date-badge { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 20px; padding: 4px 14px; font-size: 12px; margin-top: 10px; }
+  nav { background: var(--card); border-bottom: 1px solid var(--border); padding: 0 16px; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
   nav::-webkit-scrollbar { display: none; }
-  .nav-btn {
-    display: inline-block;
-    padding: 14px 16px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-light);
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-    text-decoration: none;
-    user-select: none;
-  }
-  .nav-btn.active {
-    color: var(--primary);
-    border-bottom-color: var(--primary);
-    font-weight: 700;
-  }
-
-  /* ── MAIN ── */
-  main {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 20px 16px 100px;
-  }
-
-  /* ── SECTION VIEWS ── */
+  .nav-btn { display: inline-block; padding: 14px 16px; font-size: 13px; font-weight: 500; color: var(--text-light); cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; user-select: none; }
+  .nav-btn.active { color: var(--primary); border-bottom-color: var(--primary); font-weight: 700; }
+  main { max-width: 640px; margin: 0 auto; padding: 20px 16px 100px; }
   .view { display: none; }
   .view.active { display: block; }
-
-  /* ── CARD ── */
-  .card {
-    background: var(--card);
-    border-radius: 16px;
-    padding: 22px;
-    margin-bottom: 16px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-  }
-  .card-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--primary-dark);
-    margin-bottom: 6px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .card-desc {
-    font-size: 13px;
-    color: var(--text-light);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  /* ── FORM ELEMENTS ── */
-  label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 6px;
-    margin-top: 14px;
-  }
-  label:first-child { margin-top: 0; }
-
-  textarea, input[type="text"], input[type="number"], select {
-    width: 100%;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 14px;
-    font-family: inherit;
-    color: var(--text);
-    background: var(--bg);
-    transition: border-color 0.2s;
-    resize: vertical;
-  }
-  textarea:focus, input:focus, select:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    background: #fff;
-  }
+  .card { background: var(--card); border-radius: 16px; padding: 22px; margin-bottom: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+  .card-title { font-size: 16px; font-weight: 700; color: var(--primary-dark); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
+  .card-desc { font-size: 13px; color: var(--text-light); line-height: 1.6; margin-bottom: 16px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 6px; margin-top: 14px; }
+  textarea, input[type="text"], select { width: 100%; border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 14px; font-family: inherit; color: var(--text); background: var(--bg); transition: border-color 0.2s; resize: vertical; }
+  textarea:focus, input:focus, select:focus { outline: none; border-color: var(--primary-light); background: #fff; }
   textarea { min-height: 90px; }
-
-  /* ── RANGE SLIDER ── */
-  .range-wrap { position: relative; }
-  input[type="range"] {
-    width: 100%;
-    accent-color: var(--primary);
-    height: 6px;
-    cursor: pointer;
-  }
-  .range-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--text-light);
-    margin-top: 2px;
-  }
-  .range-value {
-    text-align: center;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-top: 4px;
-  }
-
-  /* ── BUTTONS ── */
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 16px;
-    border-radius: 12px;
-    border: none;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    text-align: center;
-    transition: opacity 0.2s, transform 0.1s;
-    letter-spacing: 0.3px;
-  }
+  input[type="range"] { width: 100%; accent-color: var(--primary); cursor: pointer; }
+  .range-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-light); margin-top: 2px; }
+  .btn { display: block; width: 100%; padding: 16px; border-radius: 12px; border: none; font-size: 15px; font-weight: 700; cursor: pointer; text-align: center; transition: opacity 0.2s, transform 0.1s; }
   .btn:active { transform: scale(0.98); }
-  .btn-primary {
-    background: var(--primary);
-    color: white;
-  }
-  .btn-whatsapp {
-    background: #25D366;
-    color: white;
-  }
-  .btn-secondary {
-    background: var(--border);
-    color: var(--text);
-    margin-top: 10px;
-  }
-
-  /* ── INSIGHT BOX ── */
-  .insight {
-    background: #EAF4F1;
-    border-left: 4px solid var(--primary);
-    border-radius: 0 10px 10px 0;
-    padding: 14px 16px;
-    font-size: 13px;
-    color: var(--primary-dark);
-    line-height: 1.6;
-    margin: 14px 0;
-  }
-
-  /* ── VERSE ── */
-  .verse {
-    background: linear-gradient(135deg, #FDF6EC, #FEF9F0);
-    border: 1px solid #F0DDB0;
-    border-radius: 12px;
-    padding: 16px;
-    margin-bottom: 14px;
-    font-size: 14px;
-    color: #7A5C00;
-    line-height: 1.7;
-  }
-  .verse strong { font-size: 12px; display: block; color: var(--accent); margin-bottom: 4px; letter-spacing: 0.5px; }
-
-  /* ── SCALE GRID ── */
-  .scale-grid { display: grid; gap: 16px; }
-
-  /* ── BREATHING ── */
-  .breath-box {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    border-radius: 16px;
-    padding: 30px 20px;
-    text-align: center;
-    color: white;
-  }
-  .breath-circle {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.15);
-    border: 4px solid rgba(255,255,255,0.4);
-    margin: 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 700;
-    transition: transform 0.5s ease, background 0.5s ease;
-  }
-  .breath-circle.expand {
-    transform: scale(1.3);
-    background: rgba(255,255,255,0.25);
-  }
-  .breath-instruction { font-size: 22px; font-weight: 700; margin: 10px 0 4px; }
-  .breath-sub { font-size: 14px; opacity: 0.85; }
-  .breath-counter { font-size: 13px; opacity: 0.7; margin-top: 12px; }
-  .btn-breath {
-    background: rgba(255,255,255,0.2);
-    border: 2px solid rgba(255,255,255,0.5);
-    color: white;
-    border-radius: 30px;
-    padding: 12px 30px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-top: 16px;
-    transition: background 0.2s;
-  }
-  .btn-breath:hover { background: rgba(255,255,255,0.3); }
-
-  /* ── SUCCESS STATE ── */
-  .success-card {
-    text-align: center;
-    padding: 40px 20px;
-  }
-  .success-icon { font-size: 60px; margin-bottom: 16px; }
-  .success-title { font-size: 22px; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
-  .success-sub { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 24px; }
-
-  /* ── HOME ── */
-  .welcome-hero {
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-    border-radius: 16px;
-    padding: 28px 22px;
-    color: white;
-    margin-bottom: 20px;
-    position: relative;
-    overflow: hidden;
-  }
-  .welcome-hero::after {
-    content: '🌿';
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    font-size: 48px;
-    opacity: 0.2;
-  }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-whatsapp { background: #25D366; color: white; }
+  .btn-secondary { background: var(--border); color: var(--text); margin-top: 10px; }
+  .insight { background: #EBF4FF; border-left: 4px solid var(--primary); border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 13px; color: var(--primary-dark); line-height: 1.6; margin: 14px 0; }
+  .insight-gold { background: #FFFBEB; border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 14px 16px; font-size: 13px; color: #7A5C00; line-height: 1.6; margin: 14px 0; }
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-bottom: 10px; }
+  .tag-daily { background: #C6F6D5; color: #1C4532; }
+  .tag-weekly { background: #BEE3F8; color: #1A365D; }
+  .tag-once { background: #FEFCBF; color: #744210; }
+  .tag-livre { background: #FED7D7; color: #742A2A; }
+  .welcome-hero { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 16px; padding: 28px 22px; color: white; margin-bottom: 20px; position: relative; overflow: hidden; }
+  .welcome-hero::after { content: '🦁'; position: absolute; right: 20px; top: 16px; font-size: 52px; opacity: 0.18; }
   .welcome-hero h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
   .welcome-hero p { font-size: 14px; opacity: 0.9; line-height: 1.6; }
-
   .exercise-grid { display: grid; gap: 12px; }
-  .exercise-card {
-    background: var(--card);
-    border-radius: 14px;
-    padding: 16px 18px;
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    cursor: pointer;
-    transition: box-shadow 0.2s, border-color 0.2s;
-    box-shadow: var(--shadow);
-  }
-  .exercise-card:hover { border-color: var(--primary-light); box-shadow: 0 4px 16px rgba(74,124,111,0.15); }
+  .exercise-card { background: var(--card); border-radius: 14px; padding: 16px 18px; border: 1px solid var(--border); display: flex; align-items: center; gap: 14px; cursor: pointer; transition: box-shadow 0.2s, border-color 0.2s; box-shadow: var(--shadow); }
+  .exercise-card:hover { border-color: var(--primary-light); }
   .exercise-icon { font-size: 30px; flex-shrink: 0; }
-  .exercise-info {}
   .exercise-name { font-size: 14px; font-weight: 700; color: var(--text); }
   .exercise-freq { font-size: 12px; color: var(--text-light); margin-top: 2px; }
   .exercise-arrow { margin-left: auto; color: var(--primary-light); font-size: 18px; }
-
-  /* ── SENT PREVIEW ── */
-  #msg-preview {
-    background: #F0F7F4;
-    border: 1px solid #B7D9CD;
-    border-radius: 12px;
-    padding: 14px;
-    font-size: 12px;
-    color: #2D5C52;
-    white-space: pre-wrap;
-    word-break: break-word;
-    max-height: 240px;
-    overflow-y: auto;
-    margin-bottom: 14px;
-    font-family: monospace;
-    line-height: 1.6;
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  .tag-daily { background: #D4EDDA; color: #155724; }
-  .tag-weekly { background: #CCE5FF; color: #004085; }
-  .tag-livre { background: #FFF3CD; color: #856404; }
-
+  .five-box { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); border-radius: 16px; padding: 30px 20px; text-align: center; color: white; }
+  .five-count { font-size: 80px; font-weight: 900; line-height: 1; margin: 16px 0; transition: transform 0.3s; }
+  .five-inst { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .five-sub { font-size: 14px; opacity: 0.85; }
+  .btn-five { background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.5); color: white; border-radius: 30px; padding: 12px 30px; font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 20px; }
+  .success-card { text-align: center; padding: 40px 20px; }
+  .success-icon { font-size: 60px; margin-bottom: 16px; }
+  .success-title { font-size: 22px; font-weight: 700; color: var(--primary-dark); margin-bottom: 8px; }
+  .success-sub { font-size: 14px; color: var(--text-light); line-height: 1.6; margin-bottom: 24px; }
   hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+  .checkbox-group { display: grid; gap: 8px; margin-top: 8px; }
+  .checkbox-item { display: flex; align-items: center; gap: 10px; background: var(--bg); border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; cursor: pointer; font-size: 14px; }
+  .checkbox-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); flex-shrink: 0; }
+  #msg-preview { background: #EBF4FF; border: 1px solid #BEE3F8; border-radius: 12px; padding: 14px; font-size: 12px; color: #1A365D; white-space: pre-wrap; word-break: break-word; max-height: 240px; overflow-y: auto; margin-bottom: 14px; font-family: monospace; line-height: 1.6; }
 </style>
 </head>
 <body>
 
-<!-- CONFIG BANNER (visível apenas para configuração) -->
 <div id="config-banner">
   <span>📋 <strong>Terapeuta:</strong> Número WhatsApp:</span>
-  <input type="text" id="wp-number-input" placeholder="55119XXXXXXXX" value="">
+  <input type="text" id="wp-number-input" placeholder="55119XXXXXXXX">
   <button onclick="saveWpNumber()">Salvar</button>
   <span id="wp-saved" style="display:none;color:#155724;font-weight:700;">✓ Salvo!</span>
-  <span style="margin-left:auto;font-size:11px;opacity:0.7;">Insira sem + ou espaços</span>
+  <span style="margin-left:auto;font-size:11px;opacity:0.7;">Sem + ou espaços</span>
 </div>
 
 <header>
-  <div class="logo">🌿</div>
+  <div class="logo">🦁</div>
   <h1>Programa Terapêutico</h1>
-  <p>Everton — Jornada de Autoconhecimento</p>
+  <p>Everton — Construção de Identidade e Iniciativa</p>
   <div class="date-badge" id="date-badge"></div>
 </header>
 
@@ -406,666 +109,379 @@
   <span class="nav-btn" onclick="showView('ex6')">Ex. 6</span>
   <span class="nav-btn" onclick="showView('ex7')">Ex. 7</span>
   <span class="nav-btn" onclick="showView('ex8')">Ex. 8</span>
-  <span class="nav-btn" onclick="showView('espiritual')">✝️</span>
 </nav>
 
 <main>
 
-  <!-- HOME -->
-  <div class="view active" id="view-home">
-    <div class="welcome-hero">
-      <h2>Olá, Everton 👋</h2>
-      <p>Este é o seu espaço seguro. Responda os exercícios com honestidade. Cada resposta é um passo na sua jornada.</p>
-    </div>
-    <p style="font-size:13px;color:var(--text-light);margin-bottom:14px;">Toque em um exercício para começar:</p>
-    <div class="exercise-grid">
-      <div class="exercise-card" onclick="showView('ex1')">
-        <div class="exercise-icon">🪞</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Quem Sou Eu Sem Ela?</div>
-          <div class="exercise-freq">Diário · 7 dias</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex2')">
-        <div class="exercise-icon">📓</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Diário da Ansiedade Emocional</div>
-          <div class="exercise-freq">Quando sentir ansiedade</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex3')">
-        <div class="exercise-icon">🔇</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Jejum de Validação</div>
-          <div class="exercise-freq">21 dias de prática</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex4')">
-        <div class="exercise-icon">💌</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Carta ao Menino Ferido</div>
-          <div class="exercise-freq">Uma vez</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex5')">
-        <div class="exercise-icon">⭐</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Fortalecimento da Autoestima</div>
-          <div class="exercise-freq">Diário · noite</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex6')">
-        <div class="exercise-icon">🌱</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Independência Emocional</div>
-          <div class="exercise-freq">Semanal</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex7')">
-        <div class="exercise-icon">🫁</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Respiração para Crise</div>
-          <div class="exercise-freq">Quando precisar</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('ex8')">
-        <div class="exercise-icon">📊</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Escala de Dependência</div>
-          <div class="exercise-freq">Semanal</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-      <div class="exercise-card" onclick="showView('espiritual')">
-        <div class="exercise-icon">🕊️</div>
-        <div class="exercise-info">
-          <div class="exercise-name">Exercício Espiritual</div>
-          <div class="exercise-freq">Diário</div>
-        </div>
-        <div class="exercise-arrow">›</div>
-      </div>
-    </div>
+<!-- HOME -->
+<div class="view active" id="view-home">
+  <div class="welcome-hero">
+    <h2>Olá, Everton 👊</h2>
+    <p>Este é o seu espaço de construção. Cada exercício é um passo para se tornar o homem que você quer ser.</p>
   </div>
+  <p style="font-size:13px;color:var(--text-light);margin-bottom:14px;">Toque em um exercício para começar:</p>
+  <div class="exercise-grid">
+    <div class="exercise-card" onclick="showView('ex1')"><div class="exercise-icon">⚡</div><div><div class="exercise-name">Diário de Iniciativas</div><div class="exercise-freq">Diário</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex2')"><div class="exercise-icon">🪖</div><div><div class="exercise-name">Ação Antes da Vontade</div><div class="exercise-freq">Diário</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex3')"><div class="exercise-icon">🎯</div><div><div class="exercise-name">Decisões que Tomei</div><div class="exercise-freq">Diário</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex4')"><div class="exercise-icon">🏠</div><div><div class="exercise-name">Mapa de Responsabilidades</div><div class="exercise-freq">Semanal</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex5')"><div class="exercise-icon">🧠</div><div><div class="exercise-name">Treinamento Neurológico</div><div class="exercise-freq">Diário</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex6')"><div class="exercise-icon">✉️</div><div><div class="exercise-name">Carta ao Menino que Não Incomodava</div><div class="exercise-freq">Uma vez</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex7')"><div class="exercise-icon">⏱️</div><div><div class="exercise-name">Regra dos 5 Segundos</div><div class="exercise-freq">Quando travar</div></div><div class="exercise-arrow">›</div></div>
+    <div class="exercise-card" onclick="showView('ex8')"><div class="exercise-icon">📊</div><div><div class="exercise-name">Escala de Iniciativa</div><div class="exercise-freq">Semanal</div></div><div class="exercise-arrow">›</div></div>
+  </div>
+</div>
 
-  <!-- EXERCÍCIO 1 -->
-  <div class="view" id="view-ex1">
-    <div class="card">
-      <span class="tag tag-daily">Diário — 7 dias</span>
-      <div class="card-title">🪞 Exercício 1 — Quem Sou Eu Sem Ela?</div>
-      <div class="card-desc">Responda com sinceridade. O objetivo é separar sua identidade de namorado da sua identidade como pessoa.</div>
+<!-- EX 1 -->
+<div class="view" id="view-ex1">
+  <div class="card">
+    <span class="tag tag-daily">Diário</span>
+    <div class="card-title">⚡ Exercício 1 — Diário de Iniciativas</div>
+    <div class="card-desc">Registre as ações que você tomou hoje SEM que ninguém pedisse. Por menor que seja, conta.</div>
+    <div class="insight-gold">💡 <strong>Princípio:</strong> O homem faz o que precisa ser feito — não espera ter vontade nem ser pedido.</div>
+    <label>O que você fez hoje sem ninguém pedir?</label>
+    <textarea id="ex1q1" placeholder="Ex: Consertei algo, resolvi um problema, organizei, tomei frente em algo..."></textarea>
+    <label>Você surpreendeu a Larissa com alguma ação?</label>
+    <select id="ex1surpresa"><option value="">Selecione...</option><option value="Sim">Sim 💪</option><option value="Não, mas tomei outra iniciativa">Não, mas tomei outra iniciativa</option><option value="Não hoje">Não hoje</option></select>
+    <label>Em algum momento esperou ela pedir algo que você sabia que precisava fazer?</label>
+    <select id="ex1esperou"><option value="">Selecione...</option><option value="Não — agi antes">Não — agi antes ✅</option><option value="Sim — percebi depois">Sim, percebi depois</option><option value="Sim — e não agi">Sim, e não agi</option></select>
+    <label>Como você se sentiu ao tomar iniciativa?</label>
+    <textarea id="ex1sentiu" placeholder="Orgulho, desconforto, nada ainda? Tudo é dado válido."></textarea>
+    <div class="insight">🔑 <strong>Pergunta do dia:</strong> "O que precisa ser feito?" — não "O que ela quer que eu faça?"</div>
+    <button class="btn btn-primary" style="margin-top:16px;" onclick="sendExercise(1)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+  </div>
+</div>
 
-      <label>1. Quem sou eu?</label>
-      <textarea id="ex1q1" placeholder="Descreva quem você é, seus valores, sua essência..."></textarea>
+<!-- EX 2 -->
+<div class="view" id="view-ex2">
+  <div class="card">
+    <span class="tag tag-daily">Diário</span>
+    <div class="card-title">🪖 Exercício 2 — Ação Antes da Vontade</div>
+    <div class="card-desc">O maior engano é esperar a vontade chegar. O homem age primeiro — a vontade vem depois.</div>
+    <div class="insight-gold">⚡ <strong>Princípio:</strong> "O homem faz o que precisa, não apenas o que quer."</div>
+    <label>O que você fez MESMO SEM vontade hoje?</label>
+    <textarea id="ex2acao" placeholder="Pode ser pequena. Ex: Me levantei e resolvi algo adiado, fui ao mercado, fiz ligação difícil..."></textarea>
+    <label>O que passou pela sua cabeça antes de agir?</label>
+    <textarea id="ex2pensamento" placeholder="Ex: 'Não estou com vontade', 'deixa para depois', 'ela vai fazer'..."></textarea>
+    <label>O que aconteceu DEPOIS que você agiu?</label>
+    <textarea id="ex2depois" placeholder="Como se sentiu após completar a ação?"></textarea>
+    <label>Houve algo que você adiou ou evitou?</label>
+    <textarea id="ex2adiou" placeholder="Ser honesto aqui é o que gera crescimento..."></textarea>
+    <label>Nota de ação do dia: <span id="e2v">5</span>/10</label>
+    <input type="range" id="ex2nota" min="0" max="10" value="5" oninput="document.getElementById('e2v').textContent=this.value">
+    <div class="range-labels"><span>0 (travei)</span><span>10 (agi sempre)</span></div>
+    <button class="btn btn-primary" style="margin-top:16px;" onclick="sendExercise(2)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+  </div>
+</div>
 
-      <label>2. Quais são minhas qualidades?</label>
-      <textarea id="ex1q2" placeholder="Liste as qualidades que reconhece em você..."></textarea>
+<!-- EX 3 -->
+<div class="view" id="view-ex3">
+  <div class="card">
+    <span class="tag tag-daily">Diário</span>
+    <div class="card-title">🎯 Exercício 3 — Decisões que Tomei</div>
+    <div class="card-desc">Homens de identidade decidem. Registre as decisões do seu dia — de qualquer tamanho.</div>
+    <label>✅ Decisão 1 que tomei hoje</label>
+    <input type="text" id="ex3d1" placeholder="Ex: Decidi o que fazer no jantar, resolvi algo sem pedir ajuda...">
+    <label>✅ Decisão 2 que tomei hoje</label>
+    <input type="text" id="ex3d2" placeholder="Ex: Escolhi como usar meu tempo, defini uma prioridade...">
+    <label>✅ Decisão 3 que tomei hoje</label>
+    <input type="text" id="ex3d3" placeholder="Ex: Tomei posição sobre algo, não concordei automaticamente...">
+    <hr>
+    <label>Em algum momento pediu permissão para algo que não precisava pedir?</label>
+    <select id="ex3permissao"><option value="">Selecione...</option><option value="Não">Não — decidi por conta própria ✅</option><option value="Sim, percebi">Sim, percebi na hora</option><option value="Sim, percebi depois">Sim, percebi só depois</option></select>
+    <label>Como foi tomar decisões hoje?</label>
+    <textarea id="ex3sentiu" placeholder="Desconforto, liberdade, insegurança, orgulho?"></textarea>
+    <div class="insight">🧭 <strong>Lembre-se:</strong> Decidir é um músculo. Quanto mais você usa, mais forte fica.</div>
+    <button class="btn btn-primary" style="margin-top:8px;" onclick="sendExercise(3)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+  </div>
+</div>
 
-      <label>3. O que gosto de fazer sozinho?</label>
-      <textarea id="ex1q3" placeholder="Atividades, hobbies, momentos que te fazem bem sozinho..."></textarea>
+<!-- EX 4 -->
+<div class="view" id="view-ex4">
+  <div class="card">
+    <span class="tag tag-weekly">Semanal</span>
+    <div class="card-title">🏠 Exercício 4 — Mapa de Responsabilidades</div>
+    <div class="card-desc">O que precisa ser feito em casa e na vida esta semana? Você identifica — você resolve.</div>
+    <div class="insight-gold">🔑 <strong>Mudança de pergunta:</strong><br>❌ "O que a Larissa quer que eu faça?"<br>✅ "O que precisa ser feito?"</div>
+    <label>O que precisa ser feito esta semana? (liste tudo)</label>
+    <textarea id="ex4lista" placeholder="Reparos, compras, pagamentos, organização, tarefas com filhos..."></textarea>
+    <label>O que você já resolveu SEM que alguém pedisse?</label>
+    <textarea id="ex4resolveu" placeholder="Liste o que você tomou frente e fez por conta própria..."></textarea>
+    <label>O que você vai assumir esta semana? (compromisso concreto)</label>
+    <textarea id="ex4pendente" placeholder="O que vai fazer? Até quando?"></textarea>
+    <label>Houve algo que você sabia que precisava ser feito mas esperou ela apontar?</label>
+    <textarea id="ex4esperou" placeholder="Honestidade aqui é crescimento. O que foi?"></textarea>
+    <label>Nível de presença como provedor/protetor esta semana: <span id="e4v">5</span>/10</label>
+    <input type="range" id="ex4nota" min="0" max="10" value="5" oninput="document.getElementById('e4v').textContent=this.value">
+    <div class="range-labels"><span>0 (ausente)</span><span>10 (totalmente presente)</span></div>
+    <button class="btn btn-primary" style="margin-top:16px;" onclick="sendExercise(4)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+  </div>
+</div>
 
-      <label>4. Quais sonhos são apenas meus?</label>
-      <textarea id="ex1q4" placeholder="Sonhos, metas e desejos que existem independente do relacionamento..."></textarea>
+<!-- EX 5 -->
+<div class="view" id="view-ex5">
+  <div class="card">
+    <span class="tag tag-daily">Diário</span>
+    <div class="card-title">🧠 Exercício 5 — Treinamento Neurológico</div>
+    <div class="card-desc">Pequenas mudanças de rotina criam novas conexões no cérebro. Você está quebrando o piloto automático.</div>
+    <label>Marque o que você fez hoje:</label>
+    <div class="checkbox-group">
+      <label class="checkbox-item"><input type="checkbox" id="n1"> Escovar os dentes com a mão não dominante</label>
+      <label class="checkbox-item"><input type="checkbox" id="n2"> Pegar um caminho diferente do habitual</label>
+      <label class="checkbox-item"><input type="checkbox" id="n3"> Fazer algo na ordem inversa do costume</label>
+      <label class="checkbox-item"><input type="checkbox" id="n4"> Sentar em lugar diferente do habitual</label>
+      <label class="checkbox-item"><input type="checkbox" id="n5"> Começar o dia de forma diferente</label>
+    </div>
+    <label style="margin-top:16px;">Qual mudança de rotina você fez hoje?</label>
+    <input type="text" id="ex5mudanca" placeholder="Descreva a mudança — pequena ou grande...">
+    <label>O que sentiu ao sair do automatismo?</label>
+    <textarea id="ex5sentiu" placeholder="Resistência, desconforto, curiosidade? O cérebro resiste — isso é sinal de crescimento."></textarea>
+    <label>Em qual área da vida você mais age no piloto automático?</label>
+    <select id="ex5area"><option value="">Selecione...</option><option value="Casamento">Casamento / Larissa</option><option value="Trabalho">Trabalho</option><option value="Casa">Responsabilidades da casa</option><option value="Saúde">Saúde e corpo</option><option value="Filhos">Filhos</option><option value="Espiritualidade">Espiritualidade</option></select>
+    <div class="insight">🔬 <strong>Por que funciona:</strong> Cada vez que você age diferente do automatismo, seu cérebro cria uma nova conexão neural. Com repetição, o novo vira padrão.</div>
+    <button class="btn btn-primary" style="margin-top:8px;" onclick="sendExercise(5)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+  </div>
+</div>
 
-      <label>5. O que desejo construir para minha vida nos próximos 5 anos?</label>
-      <textarea id="ex1q5" placeholder="Carreira, espiritualidade, saúde, amizades, conquistas..."></textarea>
+<!-- EX 6 -->
+<div class="view" id="view-ex6">
+  <div class="card">
+    <span class="tag tag-once">Uma vez</span>
+    <div class="card-title">✉️ Exercício 6 — Carta ao Menino que Não Incomodava</div>
+    <div class="card-desc">Existe um menino em você que aprendeu que era melhor não agir para sofrer menos. Ele precisa ouvir de você hoje.</div>
+    <div class="insight-gold">💡 <strong>Comece assim:</strong><br>"Querido Everton, eu sei que você aprendeu que era melhor não incomodar..."</div>
+    <label>O que aquele menino aprendeu a evitar para não sofrer?</label>
+    <textarea id="ex6aprendeu" placeholder="O que você deixou de fazer, pedir, tentar — para não correr risco de punição ou rejeição?"></textarea>
+    <label>O que você abriu mão de ser para ser aceito?</label>
+    <textarea id="ex6abriu" placeholder="Que partes de você foram ficando em silêncio?"></textarea>
+    <label>O que aquele menino precisava ouvir do pai e não ouviu?</label>
+    <textarea id="ex6precisava" placeholder="Palavras, presença, validação — o que faltou?"></textarea>
+    <label>Escreva a carta completa aqui</label>
+    <textarea id="ex6carta" style="min-height:220px" placeholder="Querido Everton, eu sei que você aprendeu que era melhor não incomodar..."></textarea>
+    <div class="insight">❤️ <strong>Lembre-se:</strong> O que aquele menino não recebeu não foi culpa dele. E hoje, como homem, você pode dar a si mesmo o que faltou — começando por agir.</div>
+    <button class="btn btn-primary" style="margin-top:8px;" onclick="sendExercise(6)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+  </div>
+</div>
 
-      <label>6. Se nunca tivesse conhecido minha namorada, quem eu seria hoje?</label>
-      <textarea id="ex1q6" placeholder="Reflita honestamente sobre essa questão..."></textarea>
-
-      <div class="insight">💡 <strong>Lembre-se:</strong> Você existia antes do relacionamento. Você tem valor próprio, independente de qualquer pessoa.</div>
-
-      <button class="btn btn-primary" onclick="sendExercise(1)">Enviar para meu terapeuta →</button>
+<!-- EX 7 -->
+<div class="view" id="view-ex7">
+  <div class="card">
+    <span class="tag tag-livre">Quando travar</span>
+    <div class="card-title">⏱️ Exercício 7 — Regra dos 5 Segundos</div>
+    <div class="card-desc">Quando sentir o impulso de agir e a paralisia vier, conte de 5 até 1 e aja imediatamente.</div>
+    <div class="five-box">
+      <div class="five-inst" id="five-inst">Quando sentir que vai travar...</div>
+      <div class="five-count" id="five-count">5</div>
+      <div class="five-sub" id="five-sub">Pressione iniciar e aja ao chegar no 1</div>
+      <button class="btn-five" id="five-btn" onclick="startFive()">▶ Iniciar contagem</button>
+    </div>
+    <div style="margin-top:20px;">
+      <div class="insight-gold">🧠 <strong>Por que funciona:</strong> No momento em que você hesita, seu cérebro começa a construir motivos para não agir. A contagem interrompe esse processo e ativa a parte racional.</div>
+      <label style="margin-top:16px;">Qual situação gerou a paralisia?</label>
+      <textarea id="ex7situacao" placeholder="O que aconteceu? O que você queria fazer mas travou?"></textarea>
+      <label>Você usou a contagem e agiu?</label>
+      <select id="ex7agiu"><option value="">Selecione...</option><option value="Sim, agi">Sim, contei e agi 💪</option><option value="Tentei mas travei">Tentei mas não consegui desta vez</option><option value="Não usei">Não usei a técnica</option></select>
+      <label>O que aconteceu depois?</label>
+      <textarea id="ex7depois" placeholder="Agiu ou não — como se sentiu?"></textarea>
+      <button class="btn btn-primary" style="margin-top:14px;" onclick="sendExercise(7)">Enviar para meu terapeuta →</button>
       <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
     </div>
   </div>
+</div>
 
-  <!-- EXERCÍCIO 2 -->
-  <div class="view" id="view-ex2">
-    <div class="card">
-      <span class="tag tag-livre">Quando sentir ansiedade</span>
-      <div class="card-title">📓 Exercício 2 — Diário da Ansiedade Emocional</div>
-      <div class="card-desc">Registre sempre que sentir a necessidade urgente de falar com ela ou de buscar confirmação.</div>
-
-      <label>O que aconteceu? (Situação)</label>
-      <textarea id="ex2sit" placeholder="Ex: Ela demorou para responder minha mensagem..."></textarea>
-
-      <label>O que passou pela sua cabeça? (Pensamento automático)</label>
-      <textarea id="ex2pens" placeholder="Ex: Ela não me ama mais. Ela está me ignorando..."></textarea>
-
-      <label>O que você sentiu? (Emoção)</label>
-      <input type="text" id="ex2emoc" placeholder="Ex: Ansiedade, medo, tristeza, raiva...">
-
-      <label>Intensidade da emoção (0 a 10): <span id="ex2int-val">5</span></label>
-      <div class="range-wrap">
-        <input type="range" id="ex2int" min="0" max="10" value="5" oninput="document.getElementById('ex2int-val').textContent=this.value">
-        <div class="range-labels"><span>0 (nenhuma)</span><span>10 (máxima)</span></div>
+<!-- EX 8 -->
+<div class="view" id="view-ex8">
+  <div class="card">
+    <span class="tag tag-weekly">Semanal</span>
+    <div class="card-title">📊 Exercício 8 — Escala de Iniciativa</div>
+    <div class="card-desc">Acompanhe sua evolução semana a semana. Honestidade vale mais que nota alta.</div>
+    <div style="display:grid;gap:18px;margin-bottom:16px;">
+      <div>
+        <label>1. Quanto eu liderei esta semana? <span id="e8v1">5</span>/10</label>
+        <input type="range" id="ex8q1" min="0" max="10" value="5" oninput="document.getElementById('e8v1').textContent=this.value;updateMedia8()">
+        <div class="range-labels"><span>0 (nada)</span><span>10 (muito)</span></div>
       </div>
-
-      <label>Nova interpretação</label>
-      <textarea id="ex2nova" placeholder="Ex: Ela pode estar ocupada. Não tenho provas reais de que estou sendo rejeitado..."></textarea>
-
-      <div class="insight">❓ <strong>Pergunta-chave:</strong> "Estou buscando amor ou alívio para minha ansiedade?"</div>
-
-      <button class="btn btn-primary" onclick="sendExercise(2)">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
-    </div>
-  </div>
-
-  <!-- EXERCÍCIO 3 -->
-  <div class="view" id="view-ex3">
-    <div class="card">
-      <span class="tag tag-daily">21 dias</span>
-      <div class="card-title">🔇 Exercício 3 — Jejum de Validação</div>
-      <div class="card-desc">Durante 21 dias, você vai se comprometer a não pedir confirmações de amor, garantias ou explicações repetidas.</div>
-
-      <div class="insight">🚫 <strong>Neste exercício você NÃO vai:</strong><br>
-      • Pedir confirmação de amor<br>
-      • Pedir confirmação de sentimentos<br>
-      • Buscar garantias do relacionamento<br>
-      • Pedir explicações repetidas</div>
-
-      <label>Hoje, você sentiu vontade de pedir validação?</label>
-      <select id="ex3sentiu">
-        <option value="">Selecione...</option>
-        <option value="Sim, mas resisti">Sim, mas resisti 💪</option>
-        <option value="Sim e cedi">Sim, mas não consegui resistir</option>
-        <option value="Não senti vontade">Não senti vontade hoje</option>
-      </select>
-
-      <label>Se sentiu vontade, o que aconteceu?</label>
-      <textarea id="ex3desc" placeholder="Descreva a situação e o que você fez..."></textarea>
-
-      <label>Você fez a respiração de 3 minutos?</label>
-      <select id="ex3resp">
-        <option value="">Selecione...</option>
-        <option value="Sim">Sim, fiz a respiração</option>
-        <option value="Não precisei">Não precisei hoje</option>
-        <option value="Esqueci">Esqueci de fazer</option>
-      </select>
-
-      <label>Reflexão do dia</label>
-      <textarea id="ex3refl" placeholder="O que você percebeu hoje sobre si mesmo?"></textarea>
-
-      <div class="insight">💭 <strong>Lembre-se:</strong> "Estou buscando amor ou alívio para minha ansiedade?"</div>
-
-      <button class="btn btn-primary" onclick="sendExercise(3)">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
-    </div>
-  </div>
-
-  <!-- EXERCÍCIO 4 -->
-  <div class="view" id="view-ex4">
-    <div class="card">
-      <span class="tag tag-livre">Uma vez</span>
-      <div class="card-title">💌 Exercício 4 — Carta ao Menino Ferido</div>
-      <div class="card-desc">Escreva uma carta para você mesmo com 10 anos. Seja gentil. Esse menino merecia ser cuidado.</div>
-
-      <div class="insight">💡 <strong>Comece assim:</strong><br>"Querido Everton, eu sei que você se sentiu sozinho..."</div>
-
-      <label>O que faltou para o Everton de 10 anos?</label>
-      <textarea id="ex4faltou" placeholder="Do que aquele menino precisava que não teve?"></textarea>
-
-      <label>O que você queria ouvir naquela época?</label>
-      <textarea id="ex4queria" placeholder="Palavras que você precisava receber..."></textarea>
-
-      <label>Quem deveria ter te protegido?</label>
-      <textarea id="ex4proteg" placeholder="Pais, família, adultos de confiança..."></textarea>
-
-      <label>Escreva a carta completa aqui</label>
-      <textarea id="ex4carta" style="min-height:200px" placeholder="Querido Everton, eu sei que você se sentiu sozinho..."></textarea>
-
-      <div class="insight">❤️ <strong>Lembre-se:</strong> O que esse menino não recebeu não foi culpa dele. E hoje você pode dar a si mesmo o que faltou.</div>
-
-      <button class="btn btn-primary" onclick="sendExercise(4)">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
-    </div>
-  </div>
-
-  <!-- EXERCÍCIO 5 -->
-  <div class="view" id="view-ex5">
-    <div class="card">
-      <span class="tag tag-daily">Diário — toda noite</span>
-      <div class="card-title">⭐ Exercício 5 — Fortalecimento da Autoestima</div>
-      <div class="card-desc">Toda noite, anote 3 coisas que você fez bem hoje. Mesmo que sejam pequenas — elas importam.</div>
-
-      <label>✅ 1ª coisa que fiz bem hoje</label>
-      <input type="text" id="ex5a1" placeholder="Ex: Fui trabalhar mesmo sem vontade...">
-
-      <label>✅ 2ª coisa que fiz bem hoje</label>
-      <input type="text" id="ex5a2" placeholder="Ex: Ajudei alguém, mantive a calma...">
-
-      <label>✅ 3ª coisa que fiz bem hoje</label>
-      <input type="text" id="ex5a3" placeholder="Ex: Estudei, me alimentei bem, orei...">
-
-      <label>Como você se sente em relação a hoje? (0 a 10)</label>
-      <div class="range-value" id="ex5-feel-val">5</div>
-      <input type="range" id="ex5feel" min="0" max="10" value="5" oninput="document.getElementById('ex5-feel-val').textContent=this.value">
-      <div class="range-labels"><span>0 (muito mal)</span><span>10 (muito bem)</span></div>
-
-      <label>Algo que quer registrar sobre o dia?</label>
-      <textarea id="ex5obs" placeholder="Observações livres, reflexões, o que passou pela sua cabeça..."></textarea>
-
-      <div class="insight">🧠 <strong>Lembre-se:</strong> Você tem valor independente do que ela pensa de você.</div>
-
-      <button class="btn btn-primary" onclick="sendExercise(5)">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
-    </div>
-  </div>
-
-  <!-- EXERCÍCIO 6 -->
-  <div class="view" id="view-ex6">
-    <div class="card">
-      <span class="tag tag-weekly">Semanal</span>
-      <div class="card-title">🌱 Exercício 6 — Independência Emocional</div>
-      <div class="card-desc">Escolha 3 atividades semanais que você faz SEM a participação da namorada. Depois reflita sobre como foi.</div>
-
-      <label>Atividade 1</label>
-      <input type="text" id="ex6at1" placeholder="Ex: Academia, caminhada, leitura...">
-      <label>Como foi? Sentiu prazer sozinho?</label>
-      <textarea id="ex6r1" style="min-height:70px" placeholder="Descreva como foi a experiência..."></textarea>
-
-      <hr>
-
-      <label>Atividade 2</label>
-      <input type="text" id="ex6at2" placeholder="Ex: Igreja, amigos, estudo...">
-      <label>Como foi? Sentiu prazer sozinho?</label>
-      <textarea id="ex6r2" style="min-height:70px" placeholder="Descreva como foi a experiência..."></textarea>
-
-      <hr>
-
-      <label>Atividade 3</label>
-      <input type="text" id="ex6at3" placeholder="Ex: Música, culinária, projeto pessoal...">
-      <label>Como foi? Sentiu prazer sozinho?</label>
-      <textarea id="ex6r3" style="min-height:70px" placeholder="Descreva como foi a experiência..."></textarea>
-
-      <hr>
-      <label>Você conseguiu sentir prazer sem depender dela?</label>
-      <select id="ex6prazer">
-        <option value="">Selecione...</option>
-        <option value="Sim, consegui">Sim, consegui 💪</option>
-        <option value="Parcialmente">Parcialmente</option>
-        <option value="Não consegui">Não consegui, ainda pensei muito nela</option>
-      </select>
-
-      <div class="insight">🎯 <strong>Meta:</strong> Reprogramar a crença "Eu só sou feliz quando ela está comigo."</div>
-
-      <button class="btn btn-primary" onclick="sendExercise(6)">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
-    </div>
-  </div>
-
-  <!-- EXERCÍCIO 7 -->
-  <div class="view" id="view-ex7">
-    <div class="card">
-      <span class="tag tag-livre">Quando precisar</span>
-      <div class="card-title">🫁 Exercício 7 — Respiração para Crise</div>
-      <div class="card-desc">Use quando sentir aperto no peito ou necessidade urgente de procurá-la. Método 4-4-6.</div>
-
-      <div class="breath-box" id="breath-box">
-        <div style="font-size:14px;opacity:0.85;">Método 4 · 4 · 6</div>
-        <div class="breath-circle" id="breath-circle">🫁</div>
-        <div class="breath-instruction" id="breath-inst">Pronto para começar</div>
-        <div class="breath-sub" id="breath-sub">10 ciclos completos</div>
-        <div class="breath-counter" id="breath-counter"></div>
-        <button class="btn-breath" id="breath-btn" onclick="startBreathing()">Iniciar respiração</button>
+      <div>
+        <label>2. Quanto esperei ser pedido? <span id="e8v2">5</span>/10</label>
+        <input type="range" id="ex8q2" min="0" max="10" value="5" oninput="document.getElementById('e8v2').textContent=this.value;updateMedia8()">
+        <div class="range-labels"><span>0 (nunca esperei)</span><span>10 (sempre esperei)</span></div>
       </div>
-
-      <div style="margin-top:20px;">
-        <div class="insight">💬 <strong>Repita mentalmente:</strong><br>"Eu posso sentir saudade sem entrar em desespero."</div>
-
-        <label style="margin-top:16px;">Como estava sua ansiedade antes? (0-10)</label>
-        <div class="range-value" id="ex7-before-val">7</div>
-        <input type="range" id="ex7before" min="0" max="10" value="7" oninput="document.getElementById('ex7-before-val').textContent=this.value">
-
-        <label>Como está após a respiração? (0-10)</label>
-        <div class="range-value" id="ex7-after-val">4</div>
-        <input type="range" id="ex7after" min="0" max="10" value="4" oninput="document.getElementById('ex7-after-val').textContent=this.value">
-
-        <label>O que desencadeou a crise?</label>
-        <textarea id="ex7gatilho" placeholder="O que aconteceu que gerou a ansiedade?"></textarea>
-
-        <button class="btn btn-primary" style="margin-top:14px;" onclick="sendExercise(7)">Enviar para meu terapeuta →</button>
-        <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+      <div>
+        <label>3. Quanto evitei conflitos necessários? <span id="e8v3">5</span>/10</label>
+        <input type="range" id="ex8q3" min="0" max="10" value="5" oninput="document.getElementById('e8v3').textContent=this.value;updateMedia8()">
+        <div class="range-labels"><span>0 (não evitei)</span><span>10 (evitei tudo)</span></div>
+      </div>
+      <div>
+        <label>4. Quanto me sinto homem de iniciativa? <span id="e8v4">5</span>/10</label>
+        <input type="range" id="ex8q4" min="0" max="10" value="5" oninput="document.getElementById('e8v4').textContent=this.value;updateMedia8()">
+        <div class="range-labels"><span>0 (nada)</span><span>10 (muito)</span></div>
       </div>
     </div>
-  </div>
-
-  <!-- EXERCÍCIO 8 -->
-  <div class="view" id="view-ex8">
-    <div class="card">
-      <span class="tag tag-weekly">Semanal</span>
-      <div class="card-title">📊 Exercício 8 — Escala de Dependência Emocional</div>
-      <div class="card-desc">Responda honestamente. O objetivo é acompanhar sua evolução ao longo das semanas.</div>
-
-      <div class="scale-grid">
-        <div>
-          <label>1. Quanto meu <strong>humor</strong> depende dela? <span id="e8v1">5</span>/10</label>
-          <input type="range" id="ex8q1" min="0" max="10" value="5" oninput="document.getElementById('e8v1').textContent=this.value">
-          <div class="range-labels"><span>0 (nada)</span><span>10 (totalmente)</span></div>
-        </div>
-        <div>
-          <label>2. Quanto minha <strong>paz</strong> depende dela? <span id="e8v2">5</span>/10</label>
-          <input type="range" id="ex8q2" min="0" max="10" value="5" oninput="document.getElementById('e8v2').textContent=this.value">
-          <div class="range-labels"><span>0 (nada)</span><span>10 (totalmente)</span></div>
-        </div>
-        <div>
-          <label>3. Quanto meu <strong>valor próprio</strong> depende dela? <span id="e8v3">5</span>/10</label>
-          <input type="range" id="ex8q3" min="0" max="10" value="5" oninput="document.getElementById('e8v3').textContent=this.value">
-          <div class="range-labels"><span>0 (nada)</span><span>10 (totalmente)</span></div>
-        </div>
-        <div>
-          <label>4. Quanto meu <strong>futuro</strong> depende dela? <span id="e8v4">5</span>/10</label>
-          <input type="range" id="ex8q4" min="0" max="10" value="5" oninput="document.getElementById('e8v4').textContent=this.value">
-          <div class="range-labels"><span>0 (nada)</span><span>10 (totalmente)</span></div>
-        </div>
-      </div>
-
-      <div id="ex8-media" style="text-align:center;margin:20px 0;padding:16px;background:#EAF4F1;border-radius:12px;">
-        <div style="font-size:13px;color:var(--text-light);">Média geral</div>
-        <div id="ex8-media-val" style="font-size:36px;font-weight:800;color:var(--primary);">5.0</div>
-        <div style="font-size:12px;color:var(--text-light);">Acompanhe essa nota diminuir com o tempo</div>
-      </div>
-
-      <label>Reflexão da semana</label>
-      <textarea id="ex8refl" placeholder="Como você percebe sua dependência emocional esta semana? O que mudou?"></textarea>
-
-      <button class="btn btn-primary" onclick="sendExercise(8)">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
+    <div style="text-align:center;padding:16px;background:#EBF4FF;border-radius:12px;margin-bottom:16px;">
+      <div style="font-size:13px;color:var(--text-light);">Índice de iniciativa semanal</div>
+      <div id="ex8-media-val" style="font-size:36px;font-weight:800;color:var(--primary);">5.0</div>
+      <div style="font-size:12px;color:var(--text-light);">Acompanhe essa nota crescer com o tempo</div>
     </div>
+    <label>Qual foi seu maior avanço desta semana?</label>
+    <textarea id="ex8avanco" placeholder="Uma ação, decisão ou mudança que você se orgulha..."></textarea>
+    <label>Onde você ainda está travado?</label>
+    <textarea id="ex8trava" placeholder="Seja honesto. Identificar o ponto exato é o primeiro passo para mudar."></textarea>
+    <button class="btn btn-primary" onclick="sendExercise(8)">Enviar para meu terapeuta →</button>
+    <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
   </div>
-
-  <!-- ESPIRITUAL -->
-  <div class="view" id="view-espiritual">
-    <div class="card">
-      <span class="tag tag-daily">Diário</span>
-      <div class="card-title">🕊️ Exercício Espiritual</div>
-      <div class="card-desc">Leituras para ancorar sua fé e sua paz. Leia devagar, deixe cada versículo tocar o coração.</div>
-
-      <div class="verse">
-        <strong>SALMO 27</strong>
-        "O Senhor é a minha luz e a minha salvação; a quem temerei? O Senhor é a força da minha vida; de quem me recearei?"
-      </div>
-      <div class="verse">
-        <strong>SALMO 46</strong>
-        "Deus é o nosso refúgio e força, socorro bem presente na angústia. Aquietai-vos e sabei que eu sou Deus."
-      </div>
-      <div class="verse">
-        <strong>ISAÍAS 41:10</strong>
-        "Não temas, porque eu sou contigo; não te assombres, porque eu sou teu Deus; eu te fortaleço, e te ajudo, e te sustento com a destra da minha justiça."
-      </div>
-      <div class="verse">
-        <strong>FILIPENSES 4:6-7</strong>
-        "Não andeis ansiosos por coisa alguma; antes, em tudo, pela oração e pela súplica, com ações de graças, apresentai os vossos pedidos a Deus."
-      </div>
-
-      <div class="insight">🙏 <strong>Declare após a leitura:</strong><br>"O Senhor é minha segurança. As pessoas são bênçãos, mas não são meu alicerce."</div>
-
-      <label>Qual versículo tocou mais seu coração hoje?</label>
-      <select id="esp-versiculo">
-        <option value="">Selecione...</option>
-        <option value="Salmo 27">Salmo 27</option>
-        <option value="Salmo 46">Salmo 46</option>
-        <option value="Isaías 41:10">Isaías 41:10</option>
-        <option value="Filipenses 4:6-7">Filipenses 4:6-7</option>
-      </select>
-
-      <label>O que esse versículo disse ao seu coração?</label>
-      <textarea id="esp-reflexao" placeholder="Escreva livremente o que sentiu ao ler..."></textarea>
-
-      <label>Você fez sua oração hoje?</label>
-      <select id="esp-oracao">
-        <option value="">Selecione...</option>
-        <option value="Sim">Sim ✓</option>
-        <option value="Ainda não">Ainda não</option>
-      </select>
-
-      <button class="btn btn-primary" onclick="sendExercise('esp')">Enviar para meu terapeuta →</button>
-      <button class="btn btn-secondary" onclick="showView('home')">← Voltar ao início</button>
-    </div>
-  </div>
+</div>
 
 </main>
 
 <script>
-// ── CONFIG ──
-let wpNumber = localStorage.getItem('psi_wp') || '';
+let wpNumber = localStorage.getItem('psi_wp_everton') || '';
 document.getElementById('wp-number-input').value = wpNumber;
-
 function saveWpNumber() {
   wpNumber = document.getElementById('wp-number-input').value.trim();
-  localStorage.setItem('psi_wp', wpNumber);
+  localStorage.setItem('psi_wp_everton', wpNumber);
   document.getElementById('wp-saved').style.display = 'inline';
   setTimeout(() => document.getElementById('wp-saved').style.display = 'none', 2000);
 }
-
-// ── DATE ──
 const hoje = new Date();
-const opts = { weekday:'long', day:'numeric', month:'long', year:'numeric' };
-document.getElementById('date-badge').textContent = hoje.toLocaleDateString('pt-BR', opts);
-
-// ── NAVIGATION ──
+document.getElementById('date-badge').textContent = hoje.toLocaleDateString('pt-BR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
 function showView(name) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('view-' + name).classList.add('active');
-  const idx = ['home','ex1','ex2','ex3','ex4','ex5','ex6','ex7','ex8','espiritual'].indexOf(name);
+  const idx = ['home','ex1','ex2','ex3','ex4','ex5','ex6','ex7','ex8'].indexOf(name);
   if (idx >= 0) document.querySelectorAll('.nav-btn')[idx].classList.add('active');
   window.scrollTo(0, 0);
 }
-
-// ── ESCALA 8 MEDIA ──
-['ex8q1','ex8q2','ex8q3','ex8q4'].forEach(id => {
-  document.getElementById(id).addEventListener('input', updateMedia8);
-});
 function updateMedia8() {
-  const vals = ['ex8q1','ex8q2','ex8q3','ex8q4'].map(id => +document.getElementById(id).value);
-  const media = (vals.reduce((a,b) => a+b, 0) / 4).toFixed(1);
-  document.getElementById('ex8-media-val').textContent = media;
+  const vals = ['ex8q1','ex8q2','ex8q3','ex8q4'].map(i => +document.getElementById(i).value);
+  document.getElementById('ex8-media-val').textContent = (vals.reduce((a,b)=>a+b,0)/4).toFixed(1);
 }
-
-// ── BREATHING ──
-let breathActive = false, breathTimer = null, breathCycle = 0;
-function startBreathing() {
-  if (breathActive) return;
-  breathActive = true;
-  breathCycle = 0;
-  document.getElementById('breath-btn').textContent = 'Respirando...';
-  document.getElementById('breath-btn').disabled = true;
-  runBreathCycle();
+let fiveActive = false;
+function startFive() {
+  if (fiveActive) return;
+  fiveActive = true;
+  document.getElementById('five-btn').disabled = true;
+  document.getElementById('five-btn').textContent = 'Contando...';
+  document.getElementById('five-inst').textContent = 'Prepare-se para agir!';
+  let n = 5;
+  const iv = setInterval(() => {
+    document.getElementById('five-count').textContent = n;
+    document.getElementById('five-count').style.transform = 'scale(1.2)';
+    setTimeout(() => document.getElementById('five-count').style.transform = 'scale(1)', 200);
+    if (n === 1) {
+      clearInterval(iv);
+      setTimeout(() => {
+        document.getElementById('five-count').textContent = '🚀';
+        document.getElementById('five-inst').textContent = 'VAI — AGORA!';
+        document.getElementById('five-sub').textContent = 'Aja imediatamente. Não pense mais.';
+        document.getElementById('five-btn').textContent = '▶ Repetir';
+        document.getElementById('five-btn').disabled = false;
+        document.getElementById('five-btn').onclick = () => {
+          fiveActive = false;
+          document.getElementById('five-count').textContent = '5';
+          document.getElementById('five-inst').textContent = 'Quando sentir que vai travar...';
+          document.getElementById('five-sub').textContent = 'Pressione iniciar e aja ao chegar no 1';
+          document.getElementById('five-btn').textContent = '▶ Iniciar contagem';
+          document.getElementById('five-btn').onclick = startFive;
+        };
+        fiveActive = false;
+      }, 400);
+    }
+    n--;
+  }, 900);
 }
-function runBreathCycle() {
-  if (breathCycle >= 10) {
-    document.getElementById('breath-inst').textContent = '🎉 Concluído!';
-    document.getElementById('breath-sub').textContent = 'Muito bem! Você foi incrível.';
-    document.getElementById('breath-circle').textContent = '✓';
-    document.getElementById('breath-circle').classList.remove('expand');
-    document.getElementById('breath-counter').textContent = '';
-    document.getElementById('breath-btn').textContent = 'Refazer';
-    document.getElementById('breath-btn').disabled = false;
-    document.getElementById('breath-btn').onclick = () => {
-      breathActive = false;
-      breathCycle = 0;
-      document.getElementById('breath-circle').textContent = '🫁';
-      document.getElementById('breath-inst').textContent = 'Pronto para começar';
-      document.getElementById('breath-sub').textContent = '10 ciclos completos';
-      document.getElementById('breath-counter').textContent = '';
-      document.getElementById('breath-btn').textContent = 'Iniciar respiração';
-      document.getElementById('breath-btn').onclick = startBreathing;
-    };
-    return;
-  }
-  breathCycle++;
-  const circle = document.getElementById('breath-circle');
-  const inst = document.getElementById('breath-inst');
-  const sub = document.getElementById('breath-sub');
-  const counter = document.getElementById('breath-counter');
-  counter.textContent = `Ciclo ${breathCycle} de 10`;
-
-  // Inspire 4s
-  inst.textContent = 'Inspire...';
-  sub.textContent = '4 segundos';
-  circle.classList.add('expand');
-  circle.textContent = '↑';
-  let t = 4;
-  const inspire = setInterval(() => { sub.textContent = `${t--} segundos`; if(t<0) { clearInterval(inspire); hold(); } }, 1000);
-
-  function hold() {
-    inst.textContent = 'Segure...';
-    sub.textContent = '4 segundos';
-    circle.textContent = '⏸';
-    let t2 = 4;
-    const holdI = setInterval(() => { sub.textContent = `${t2--} segundos`; if(t2<0) { clearInterval(holdI); exhale(); } }, 1000);
-  }
-  function exhale() {
-    inst.textContent = 'Solte...';
-    sub.textContent = '6 segundos';
-    circle.classList.remove('expand');
-    circle.textContent = '↓';
-    let t3 = 6;
-    const exhI = setInterval(() => { sub.textContent = `${t3--} segundos`; if(t3<0) { clearInterval(exhI); setTimeout(runBreathCycle, 500); } }, 1000);
-  }
-}
-
-// ── SEND EXERCISE ──
 function get(id) {
   const el = document.getElementById(id);
   if (!el) return '';
+  if (el.type === 'checkbox') return el.checked ? 'Sim' : 'Não';
   return (el.value || '').trim();
 }
-
+function getChecked(ids) {
+  const checked = ids.filter(id => { const el = document.getElementById(id); return el && el.checked; })
+    .map(id => document.getElementById(id).parentElement.textContent.trim());
+  return checked.length ? checked.join(', ') : 'Nenhum';
+}
 function sendExercise(num) {
   const data = hoje.toLocaleDateString('pt-BR');
   let msg = '';
-
   if (num === 1) {
-    if (!get('ex1q1')) return alert('Por favor, responda pelo menos a primeira questão.');
-    msg = `📋 *EXERCÍCIO 1 — Quem Sou Eu Sem Ela?*\n📅 ${data}\n\n`;
-    msg += `*1. Quem sou eu?*\n${get('ex1q1')}\n\n`;
-    msg += `*2. Minhas qualidades:*\n${get('ex1q2')}\n\n`;
-    msg += `*3. O que gosto de fazer sozinho:*\n${get('ex1q3')}\n\n`;
-    msg += `*4. Meus sonhos próprios:*\n${get('ex1q4')}\n\n`;
-    msg += `*5. O que quero construir nos próximos 5 anos:*\n${get('ex1q5')}\n\n`;
-    msg += `*6. Quem eu seria sem ela:*\n${get('ex1q6')}`;
+    if (!get('ex1q1')) return alert('Por favor, registre pelo menos uma iniciativa do dia.');
+    msg = 'EXERCÍCIO 1 — Diário de Iniciativas\n📅 ' + data + '\n\n';
+    msg += 'O que fiz sem ninguém pedir:\n' + get('ex1q1') + '\n\n';
+    msg += 'Surpreendeu a Larissa? ' + get('ex1surpresa') + '\n';
+    msg += 'Esperou ela pedir? ' + get('ex1esperou') + '\n\n';
+    msg += 'Como se sentiu:\n' + get('ex1sentiu');
+  } else if (num === 2) {
+    msg = 'EXERCÍCIO 2 — Ação Antes da Vontade\n📅 ' + data + '\n\n';
+    msg += 'O que fiz sem vontade:\n' + get('ex2acao') + '\n\n';
+    msg += 'Pensamento antes:\n' + get('ex2pensamento') + '\n\n';
+    msg += 'Como me senti depois:\n' + get('ex2depois') + '\n\n';
+    msg += 'O que adiei:\n' + get('ex2adiou') + '\n\n';
+    msg += 'Nota de ação: ' + get('ex2nota') + '/10';
+  } else if (num === 3) {
+    msg = 'EXERCÍCIO 3 — Decisões que Tomei\n📅 ' + data + '\n\n';
+    msg += 'Decisões:\n✅ ' + get('ex3d1') + '\n✅ ' + get('ex3d2') + '\n✅ ' + get('ex3d3') + '\n\n';
+    msg += 'Pediu permissão desnecessária? ' + get('ex3permissao') + '\n\n';
+    msg += 'Como foi:\n' + get('ex3sentiu');
+  } else if (num === 4) {
+    msg = 'EXERCÍCIO 4 — Mapa de Responsabilidades\n📅 ' + data + '\n\n';
+    msg += 'O que precisa ser feito:\n' + get('ex4lista') + '\n\n';
+    msg += 'O que já resolvi:\n' + get('ex4resolveu') + '\n\n';
+    msg += 'Compromisso:\n' + get('ex4pendente') + '\n\n';
+    msg += 'O que esperei ela apontar:\n' + get('ex4esperou') + '\n\n';
+    msg += 'Presença como provedor: ' + get('ex4nota') + '/10';
+  } else if (num === 5) {
+    msg = 'EXERCÍCIO 5 — Treinamento Neurológico\n📅 ' + data + '\n\n';
+    msg += 'Práticas realizadas: ' + getChecked(['n1','n2','n3','n4','n5']) + '\n\n';
+    msg += 'Mudança de rotina:\n' + get('ex5mudanca') + '\n\n';
+    msg += 'O que sentiu:\n' + get('ex5sentiu') + '\n\n';
+    msg += 'Área com mais piloto automático: ' + get('ex5area');
+  } else if (num === 6) {
+    if (!get('ex6carta')) return alert('Por favor, escreva a carta.');
+    msg = 'EXERCÍCIO 6 — Carta ao Menino que Não Incomodava\n📅 ' + data + '\n\n';
+    msg += 'O que aprendeu a evitar:\n' + get('ex6aprendeu') + '\n\n';
+    msg += 'O que abriu mão de ser:\n' + get('ex6abriu') + '\n\n';
+    msg += 'O que precisava ouvir do pai:\n' + get('ex6precisava') + '\n\n';
+    msg += 'A carta:\n' + get('ex6carta');
+  } else if (num === 7) {
+    msg = 'EXERCÍCIO 7 — Regra dos 5 Segundos\n📅 ' + data + '\n\n';
+    msg += 'Situação de paralisia:\n' + get('ex7situacao') + '\n\n';
+    msg += 'Usou a contagem? ' + get('ex7agiu') + '\n\n';
+    msg += 'O que aconteceu depois:\n' + get('ex7depois');
+  } else if (num === 8) {
+    const vals = ['ex8q1','ex8q2','ex8q3','ex8q4'].map(i => +document.getElementById(i).value);
+    const media = (vals.reduce((a,b)=>a+b,0)/4).toFixed(1);
+    msg = 'EXERCÍCIO 8 — Escala de Iniciativa\n📅 ' + data + '\n\n';
+    msg += 'Liderança: ' + get('ex8q1') + '/10\n';
+    msg += 'Esperei ser pedido: ' + get('ex8q2') + '/10\n';
+    msg += 'Evitei conflitos: ' + get('ex8q3') + '/10\n';
+    msg += 'Me sinto homem de iniciativa: ' + get('ex8q4') + '/10\n';
+    msg += 'Índice geral: ' + media + '/10\n\n';
+    msg += 'Maior avanço:\n' + get('ex8avanco') + '\n\n';
+    msg += 'Onde ainda estou travado:\n' + get('ex8trava');
   }
-  else if (num === 2) {
-    if (!get('ex2sit')) return alert('Por favor, descreva a situação.');
-    msg = `📓 *EXERCÍCIO 2 — Diário da Ansiedade*\n📅 ${data}\n\n`;
-    msg += `*Situação:*\n${get('ex2sit')}\n\n`;
-    msg += `*Pensamento automático:*\n${get('ex2pens')}\n\n`;
-    msg += `*Emoção sentida:* ${get('ex2emoc')}\n`;
-    msg += `*Intensidade:* ${get('ex2int')}/10\n\n`;
-    msg += `*Nova interpretação:*\n${get('ex2nova')}`;
-  }
-  else if (num === 3) {
-    msg = `🔇 *EXERCÍCIO 3 — Jejum de Validação*\n📅 ${data}\n\n`;
-    msg += `*Sentiu vontade de pedir validação?*\n${get('ex3sentiu')}\n\n`;
-    msg += `*O que aconteceu:*\n${get('ex3desc')}\n\n`;
-    msg += `*Fez a respiração:* ${get('ex3resp')}\n\n`;
-    msg += `*Reflexão do dia:*\n${get('ex3refl')}`;
-  }
-  else if (num === 4) {
-    if (!get('ex4carta')) return alert('Por favor, escreva a carta.');
-    msg = `💌 *EXERCÍCIO 4 — Carta ao Menino Ferido*\n📅 ${data}\n\n`;
-    msg += `*O que faltou:*\n${get('ex4faltou')}\n\n`;
-    msg += `*O que queria ouvir:*\n${get('ex4queria')}\n\n`;
-    msg += `*Quem deveria ter protegido:*\n${get('ex4proteg')}\n\n`;
-    msg += `*A carta:*\n${get('ex4carta')}`;
-  }
-  else if (num === 5) {
-    if (!get('ex5a1')) return alert('Por favor, registre pelo menos uma conquista do dia.');
-    msg = `⭐ *EXERCÍCIO 5 — Autoestima Diária*\n📅 ${data}\n\n`;
-    msg += `*3 coisas que fiz bem hoje:*\n`;
-    msg += `✅ ${get('ex5a1')}\n`;
-    msg += `✅ ${get('ex5a2')}\n`;
-    msg += `✅ ${get('ex5a3')}\n\n`;
-    msg += `*Como me sinto hoje:* ${get('ex5feel')}/10\n\n`;
-    if (get('ex5obs')) msg += `*Observações:*\n${get('ex5obs')}`;
-  }
-  else if (num === 6) {
-    msg = `🌱 *EXERCÍCIO 6 — Independência Emocional*\n📅 ${data}\n\n`;
-    msg += `*Atividade 1:* ${get('ex6at1')}\n${get('ex6r1')}\n\n`;
-    msg += `*Atividade 2:* ${get('ex6at2')}\n${get('ex6r2')}\n\n`;
-    msg += `*Atividade 3:* ${get('ex6at3')}\n${get('ex6r3')}\n\n`;
-    msg += `*Conseguiu sentir prazer sozinho?*\n${get('ex6prazer')}`;
-  }
-  else if (num === 7) {
-    msg = `🫁 *EXERCÍCIO 7 — Crise de Ansiedade*\n📅 ${data}\n\n`;
-    msg += `*Ansiedade antes da respiração:* ${get('ex7before')}/10\n`;
-    msg += `*Ansiedade depois:* ${get('ex7after')}/10\n\n`;
-    msg += `*O que desencadeou:*\n${get('ex7gatilho')}`;
-  }
-  else if (num === 8) {
-    const media = ((+get('ex8q1') + +get('ex8q2') + +get('ex8q3') + +get('ex8q4')) / 4).toFixed(1);
-    msg = `📊 *EXERCÍCIO 8 — Escala de Dependência*\n📅 ${data}\n\n`;
-    msg += `*Humor depende dela:* ${get('ex8q1')}/10\n`;
-    msg += `*Paz depende dela:* ${get('ex8q2')}/10\n`;
-    msg += `*Valor próprio depende dela:* ${get('ex8q3')}/10\n`;
-    msg += `*Futuro depende dela:* ${get('ex8q4')}/10\n`;
-    msg += `\n*Média geral:* ${media}/10\n\n`;
-    if (get('ex8refl')) msg += `*Reflexão da semana:*\n${get('ex8refl')}`;
-  }
-  else if (num === 'esp') {
-    msg = `🕊️ *EXERCÍCIO ESPIRITUAL*\n📅 ${data}\n\n`;
-    msg += `*Versículo que tocou o coração:*\n${get('esp-versiculo')}\n\n`;
-    msg += `*Reflexão:*\n${get('esp-reflexao')}\n\n`;
-    msg += `*Fez oração hoje:* ${get('esp-oracao')}`;
-  }
-
-  msg += `\n\n_Enviado pelo Programa Terapêutico — Everton_`;
-
-  if (!wpNumber) {
-    // Fallback: mostrar mensagem para copiar
-    showFallback(msg);
-    return;
-  }
-
-  const url = `https://wa.me/${wpNumber}?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
+  msg += '\n\n_Enviado pelo Programa Terapêutico — Everton_';
+  if (!wpNumber) { showFallback(msg); return; }
+  window.open('https://wa.me/' + wpNumber + '?text=' + encodeURIComponent(msg), '_blank');
   showSuccess(num);
 }
-
 function showFallback(msg) {
-  const main = document.querySelector('main');
   const card = document.createElement('div');
   card.className = 'card';
-  card.style.position = 'fixed';
-  card.style.top = '60px';
-  card.style.left = '50%';
-  card.style.transform = 'translateX(-50%)';
-  card.style.maxWidth = '600px';
-  card.style.width = '90%';
-  card.style.zIndex = '999';
-  card.style.boxShadow = '0 8px 40px rgba(0,0,0,0.2)';
-  card.innerHTML = `
-    <div class="card-title">⚠️ Configure o número do terapeuta</div>
-    <p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">O número do WhatsApp não foi configurado. Configure no topo da página ou copie a mensagem abaixo:</p>
-    <div id="msg-preview">${msg}</div>
-    <button class="btn btn-whatsapp" onclick="navigator.clipboard.writeText(document.getElementById('msg-preview').textContent);this.textContent='✓ Copiado!'">Copiar mensagem</button>
-    <button class="btn btn-secondary" onclick="this.parentElement.remove()" style="margin-top:10px;">Fechar</button>
-  `;
+  Object.assign(card.style, { position:'fixed', top:'60px', left:'50%', transform:'translateX(-50%)', maxWidth:'600px', width:'90%', zIndex:'999', boxShadow:'0 8px 40px rgba(0,0,0,0.2)' });
+  card.innerHTML = '<div class="card-title">⚠️ Configure o número do terapeuta</div><p style="font-size:13px;color:var(--text-light);margin-bottom:12px;">Configure no topo da página ou copie:</p><div id="msg-preview">' + msg + '</div><button class="btn btn-whatsapp" onclick="navigator.clipboard.writeText(document.getElementById(\'msg-preview\').textContent);this.textContent=\'✓ Copiado!\'">Copiar mensagem</button><button class="btn btn-secondary" onclick="this.parentElement.remove()" style="margin-top:10px;">Fechar</button>';
   document.body.appendChild(card);
 }
-
 function showSuccess(num) {
-  const view = document.getElementById('view-ex' + num) || document.getElementById('view-espiritual');
-  const card = view.querySelector('.card');
-  const original = card.innerHTML;
-  card.innerHTML = `
-    <div class="success-card">
-      <div class="success-icon">✅</div>
-      <div class="success-title">Enviado com sucesso!</div>
-      <div class="success-sub">Sua resposta foi enviada ao seu terapeuta pelo WhatsApp.<br>Continue assim — cada passo conta.</div>
-      <button class="btn btn-primary" onclick="showView('home')">← Voltar ao início</button>
-      <button class="btn btn-secondary" style="margin-top:10px;" onclick="this.closest('.card').innerHTML = \`${original.replace(/`/g,'\\`')}\`">Editar resposta</button>
-    </div>
-  `;
+  const view = document.getElementById('view-ex' + num);
+  if (!view) return;
+  view.querySelector('.card').innerHTML = '<div class="success-card"><div class="success-icon">✅</div><div class="success-title">Enviado!</div><div class="success-sub">Seu terapeuta recebeu. Continue assim — cada ação conta.</div><button class="btn btn-primary" onclick="showView(\'home\')">← Voltar ao início</button></div>';
   window.scrollTo(0, 0);
 }
 </script>
